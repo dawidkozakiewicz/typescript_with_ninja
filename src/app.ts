@@ -16,7 +16,8 @@ const amount = document.querySelector('#amount') as HTMLInputElement;
 // list template instance
 const ul = document.querySelector('ul') as HTMLUListElement;
 const list = new ListTemplate(ul);
-console.log(list);
+const test = document.querySelector('.test') as HTMLDivElement;
+
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
