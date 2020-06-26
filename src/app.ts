@@ -25,52 +25,30 @@ form.addEventListener('submit', (e: Event) => {
   } else {
     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
-
+  
   list.render(doc, type.value, 'end');
 });
 
-// GENERICS
+// ENUMS
 
-// const addUID = <T extends { name: string }>(obj: T) => {
-//   let uid = Math.floor(Math.random() * 100);
-//   return { ...obj, uid };
-// }
-// let x = addUID({ name: 'Dawid', age: 41 });
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR };
 
-// console.log(x.name);
-
-// const addUID = <T extends object>(obj: T) => {
-//   let uid = Math.floor(Math.random() * 100);
-//   return { ...obj, uid };
-// }
-
-// const addUID = <T extends {name: string}>(obj: T) => {
-//   let uid = Math.floor(Math.random() * 100);
-//   return {...obj, uid};
-// }
-
-// let docOne = addUID({name: 'yoshi', age: 40});
-//let docTwo = addUID('shaun');
-
-// console.log(docOne.name);
-
-// with interfaces
 interface Resource<T> {
   uid: number;
-  resourceName: string;
+  resourceType: ResourceType;
   data: T;
 }
 
-const docThree: Resource<object> = {
+const docOne: Resource<object> = {
   uid: 1,
-  resourceName: 'person',
-  data: { name: 'shaun' }
-};
+  resourceType: ResourceType.BOOK,
+  data: { title: 'name of the wind' }
+}
+const docTwo: Resource<object> = {
+  uid: 10,
+  resourceType: ResourceType.DIRECTOR,
+  data: { title: 'name of the wind' }
+}
 
-const docFour: Resource<string[]> = {
-  uid: 1,
-  resourceName: 'shoppingList',
-  data: ['bread', 'milk'],
-};
-
-console.log(docThree, docFour);
+console.log(docOne);
+console.log(docTwo);
